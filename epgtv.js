@@ -15,7 +15,7 @@
     // ✅ الدالة الرئيسية للاستدعاء من الخارج
     window.getEPGData = async function (callback) {
         const allEpgData = [];
-        const maxPages = 2;
+        const maxPages = 3;
 
         try {
             for (let page = 1; page <= maxPages; page++) {
