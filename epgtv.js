@@ -20,8 +20,12 @@
         try {
             for (let page = 1; page <= maxPages; page++) {
                 const proxyUrl = 'https://api.allorigins.win/raw?url=';
-                const targetUrl = `https://elcinema.com/tvsummary/now/?page=${page}`;
-                const response = await fetch(proxyUrl + targetUrl);
+                const timestamp = Date.now(); // منع الكاش
+                const targetUrl = `https://elcinema.com/tvsummary/now/?page=${page}&t=${timestamp}`;
+
+                const response = await fetch(proxyUrl + encodeURIComponent(targetUrl), {
+                    cache: 'no-store'
+                });
 
                 if (!response.ok) {
                     throw new Error(`HTTP error! Status: ${response.status} for page ${page}`);
